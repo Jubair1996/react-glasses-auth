@@ -1,9 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Home from "./Pages/Home/Home";
 import Products from "./Pages/Products/Products";
@@ -13,9 +10,10 @@ import About from "./Pages/About/About";
 import ProductDetail from "./Pages/ProductDetail/ProductDetail";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Login/Register";
+import AuthProvider from "./Provider/AuthProvider";
 
-
-const url = 'https://my-json-server.typicode.com/faarhaan10/react-sunglasses/sunglasses';
+const url =
+  "https://my-json-server.typicode.com/faarhaan10/react-sunglasses/sunglasses";
 
 const router = createBrowserRouter([
   {
@@ -24,38 +22,40 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       {
-        path: '',
+        path: "",
         element: <Home />,
-        loader: async () => (fetch(url))
+        loader: async () => fetch(url),
       },
       {
-        path: 'products',
+        path: "products",
         element: <Products />,
-        loader: async () => (fetch(url))
+        loader: async () => fetch(url),
       },
       {
-        path: 'product/:id',
+        path: "product/:id",
         element: <ProductDetail />,
-        loader: async ({ params }) => (fetch(`${url}/${params.id}`))
+        loader: async ({ params }) => fetch(`${url}/${params.id}`),
       },
       {
-        path: 'about',
-        element: <About />
+        path: "about",
+        element: <About />,
       },
       {
-        path: 'login',
-        element: <Login />
+        path: "login",
+        element: <Login />,
       },
       {
-        path: 'register',
-        element: <Register />
+        path: "register",
+        element: <Register />,
       },
-    ]
+    ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
