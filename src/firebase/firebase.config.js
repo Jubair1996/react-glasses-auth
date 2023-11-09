@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyC3hEAJ_f6MkTPFaLGCKCCxndmZU8zJKFs",
   authDomain: "glasses-firebase-auth-62019.firebaseapp.com",
