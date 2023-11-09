@@ -20,7 +20,10 @@ const Register = () => {
 
 
     createUser(email,password)
-    .then(res =>console.log(res))
+    .then(res =>{
+      console.log(res)
+      event.target.reset()
+  })
     .catch(err => console.log(err))
   }
   return (
